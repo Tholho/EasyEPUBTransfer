@@ -1,6 +1,8 @@
 package com.example.easyepubtransfer.ui.theme
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -32,3 +34,9 @@ val Typography = Typography(
     )
     */
 )
+
+val Typography.loadingBody: TextStyle
+    @Composable
+    get() = bodyMedium.copy(
+        color = MaterialTheme.colorScheme.outline
+    )
