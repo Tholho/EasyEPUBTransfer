@@ -10,13 +10,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.easyepubtransfer.R
 
 @Composable
 fun DefaultView(message: String = stringResource(R.string.defaultMessage)) {
     Box(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
             .padding(horizontal = 16.dp),
         contentAlignment = Alignment.Center
     ) {
@@ -25,7 +27,9 @@ fun DefaultView(message: String = stringResource(R.string.defaultMessage)) {
         ) {
             Text(
                 text = message,
-                style = MaterialTheme.typography.titleLarge)
+                style = MaterialTheme.typography.titleLarge,
+                textAlign = TextAlign.Center,
+            )
         }
     }
 }
