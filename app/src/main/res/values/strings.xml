@@ -2,4 +2,6 @@
     <string name="app_name">EasyEPUBTransfer</string>
     <string name="loading">Loading...</string>
     <string name="defaultMessage">Waiting for USB connection...\nPlease plug in your e-reader device.</string>
+    <string name="usb_icon_content_description">Simple USB logo</string>
+    <string name="cable_icon_content_description">A cable icon</string>
 </resources>
