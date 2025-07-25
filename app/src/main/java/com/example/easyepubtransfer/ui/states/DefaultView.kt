@@ -34,7 +34,8 @@ fun DefaultView(message: String = stringResource(R.string.defaultMessage)) {
             contentDescription = stringResource(id = R.string.usb_icon_content_description),
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
-                .size(96.dp)
+                .size(96.dp),
+            tint = MaterialTheme.colorScheme.secondary
         )
 
         Spacer(modifier = Modifier.weight(0.2f))
@@ -53,7 +54,8 @@ fun DefaultView(message: String = stringResource(R.string.defaultMessage)) {
             contentDescription = stringResource(id = R.string.cable_icon_content_description),
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
-                .size(64.dp)
+                .size(64.dp),
+            tint = MaterialTheme.colorScheme.secondary
         )
 
         Spacer(modifier = Modifier.weight(0.05f))
