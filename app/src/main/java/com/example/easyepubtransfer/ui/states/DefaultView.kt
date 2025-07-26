@@ -21,56 +21,41 @@ import com.example.easyepubtransfer.ui.theme.EasyEPUBTransferTheme
 
 @Composable
 fun DefaultView(message: String = stringResource(R.string.defaultMessage)) {
-    Column(
+    Box(
         modifier = Modifier
-            .padding(16.dp)
+            .fillMaxSize()
+            .padding(16.dp),
+        contentAlignment = Alignment.Center
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .weight(1f),
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.padding(top = 32.dp)
         ) {
-
             Icon(
                 painter = painterResource(R.drawable.usb_24px),
                 contentDescription = stringResource(id = R.string.usb_icon_content_description),
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .size(96.dp),
+                modifier = Modifier.size(96.dp),
                 tint = MaterialTheme.colorScheme.secondary
             )
-        }
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .weight(1f),
-        ) {
+
             Text(
                 text = message,
                 style = MaterialTheme.typography.displaySmall,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.align(Alignment.Center)
+                modifier = Modifier.padding(top = 32.dp)
             )
         }
-        Box(
+
+        Icon(
+            painter = painterResource(R.drawable.cable_24px),
+            contentDescription = stringResource(id = R.string.cable_icon_content_description),
             modifier = Modifier
-                .fillMaxSize()
-                .weight(1f),
-        ) {
-            Icon(
-                painter = painterResource(R.drawable.cable_24px),
-                contentDescription = stringResource(id = R.string.cable_icon_content_description),
-                modifier = Modifier
-                    .align(Alignment.BottomCenter)
-                    .size(64.dp),
-                tint = MaterialTheme.colorScheme.secondary
-            )
-        }
+                .align(Alignment.BottomCenter)
+                .size(64.dp),
+            tint = MaterialTheme.colorScheme.secondary
+        )
     }
-
-
-    }
-
+}
 
 
 @Preview(showBackground = true)
