@@ -1,4 +1,4 @@
-package com.example.easyepubtransfer.ui.states
+package com.example.easyepubtransfer.ui.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,8 +17,9 @@ import androidx.compose.ui.unit.dp
 import com.example.easyepubtransfer.R
 import com.example.easyepubtransfer.ui.theme.loadingBody
 
+
 @Composable
-fun LoadingView(message: String = stringResource(R.string.loading)) {
+fun Loading(message: String = stringResource(R.string.loading)) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
