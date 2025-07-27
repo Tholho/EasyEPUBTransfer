@@ -29,7 +29,6 @@ fun DefaultView(
     message: String = stringResource(R.string.defaultMessage),
     viewModel: DefaultViewModel = hiltViewModel()
 ) {
-    val isScanning by viewModel.isScanning.observeAsState(false)
     val devices by viewModel.usbDevices.observeAsState(emptyList())
 
     LaunchedEffect(Unit) {

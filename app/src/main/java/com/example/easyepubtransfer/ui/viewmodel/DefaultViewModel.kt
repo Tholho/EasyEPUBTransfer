@@ -17,19 +17,13 @@ class DefaultViewModel @Inject constructor(
     private val _usbDevices = MutableLiveData<List<UsbDevice>>()
     val usbDevices: LiveData<List<UsbDevice>> = _usbDevices
 
-    private val _isScanning = MutableLiveData<Boolean>()
-    val isScanning: LiveData<Boolean> = _isScanning
-
     fun scanForUsbDevices() {
         viewModelScope.launch {
-            _isScanning.value = true
             try {
                 val devices = usbRepository.scanDevices()
                 _usbDevices.value = devices
             } catch (e: Exception) {
                 // Handle
-            } finally {
-                _isScanning.value = false
             }
         }
     }
