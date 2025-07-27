@@ -9,6 +9,9 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -18,9 +21,21 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.easyepubtransfer.R
 import com.example.easyepubtransfer.ui.theme.EasyEPUBTransferTheme
+import com.example.easyepubtransfer.ui.viewmodel.DefaultViewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
-fun DefaultView(message: String = stringResource(R.string.defaultMessage)) {
+fun DefaultView(
+    message: String = stringResource(R.string.defaultMessage),
+    viewModel: DefaultViewModel = hiltViewModel()
+) {
+    val isScanning by viewModel.isScanning.observeAsState(false)
+    val devices by viewModel.usbDevices.observeAsState(emptyList())
+
+    LaunchedEffect(Unit) {
+        viewModel.scanForUsbDevices()
+    }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -38,12 +53,22 @@ fun DefaultView(message: String = stringResource(R.string.defaultMessage)) {
                 tint = MaterialTheme.colorScheme.secondary
             )
 
-            Text(
-                text = message,
-                style = MaterialTheme.typography.displaySmall,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.padding(top = 32.dp)
-            )
+            // THIS IS FOR TESTING REMOVE LATER
+            if (devices.isNotEmpty()) {
+                Text(
+                    text = "Found ${devices.size} USB device(s)",
+                    style = MaterialTheme.typography.displaySmall,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(top = 32.dp)
+                )
+            } else {
+                Text(
+                    text = message,
+                    style = MaterialTheme.typography.displaySmall,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(top = 32.dp)
+                )
+            }
         }
 
         Icon(
